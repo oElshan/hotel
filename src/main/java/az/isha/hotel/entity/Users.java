@@ -9,7 +9,6 @@ import java.util.Objects;
 @Table(name = "users")
 public class Users {
     private int id;
-    private int idRole;
     private String name;
     private String login;
     private String password;
@@ -17,7 +16,16 @@ public class Users {
     private Timestamp dateUpdate;
     private Roles roles;
     private List<Booking> bookings;
-    // TODO: 2020-02-18 Reservation mapping wrong
+    private List<Users> users;
+
+    @OneToMany(mappedBy = "users",fetch = FetchType.LAZY,cascade = {CascadeType.MERGE,CascadeType.PERSIST})
+    public List<Users> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<Users> users) {
+        this.users = users;
+    }
 
     @OneToMany(mappedBy = "users",fetch = FetchType.LAZY,cascade = {CascadeType.MERGE,CascadeType.PERSIST})
     public List<Booking> getBookings() {
@@ -48,15 +56,6 @@ public class Users {
         this.id = id;
     }
 
-    @Basic
-    @Column(name = "id_role")
-    public int getIdRole() {
-        return idRole;
-    }
-
-    public void setIdRole(int idRole) {
-        this.idRole = idRole;
-    }
 
     @Basic
     @Column(name = "name")
@@ -114,7 +113,6 @@ public class Users {
         if (o == null || getClass() != o.getClass()) return false;
         Users users = (Users) o;
         return id == users.id &&
-                idRole == users.idRole &&
                 Objects.equals(name, users.name) &&
                 Objects.equals(login, users.login) &&
                 Objects.equals(password, users.password) &&
@@ -124,6 +122,6 @@ public class Users {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, idRole, name, login, password, dateCreate, dateUpdate);
+        return Objects.hash(id, name, login, password, dateCreate, dateUpdate);
     }
 }

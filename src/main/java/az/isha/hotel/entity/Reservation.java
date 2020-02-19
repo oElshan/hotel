@@ -7,17 +7,24 @@ import java.util.Objects;
 @Entity
 public class Reservation {
     private int id;
-    private int idClient;
-    private int idNumber;
     private Timestamp checkIn;
     private Timestamp checkOut;
     private double price;
-    private int idUser;
     private Timestamp dateCreate;
     private Timestamp dateUpdate;
     private Client client;
     private Number number;
-    // TODO: 2020-02-18 Usres ? wrong associations
+    private Users users;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_user")
+    public Users getUsers() {
+        return users;
+    }
+
+    public void setUsers(Users users) {
+        this.users = users;
+    }
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_client",nullable = false)
@@ -50,25 +57,6 @@ public class Reservation {
         this.id = id;
     }
 
-    @Basic
-    @Column(name = "id_client")
-    public int getIdClient() {
-        return idClient;
-    }
-
-    public void setIdClient(int idClient) {
-        this.idClient = idClient;
-    }
-
-    @Basic
-    @Column(name = "id_number")
-    public int getIdNumber() {
-        return idNumber;
-    }
-
-    public void setIdNumber(int idNumber) {
-        this.idNumber = idNumber;
-    }
 
     @Basic
     @Column(name = "check_in")
@@ -101,16 +89,6 @@ public class Reservation {
     }
 
     @Basic
-    @Column(name = "id_user")
-    public int getIdUser() {
-        return idUser;
-    }
-
-    public void setIdUser(int idUser) {
-        this.idUser = idUser;
-    }
-
-    @Basic
     @Column(name = "date_create")
     public Timestamp getDateCreate() {
         return dateCreate;
@@ -136,10 +114,7 @@ public class Reservation {
         if (o == null || getClass() != o.getClass()) return false;
         Reservation that = (Reservation) o;
         return id == that.id &&
-                idClient == that.idClient &&
-                idNumber == that.idNumber &&
                 Double.compare(that.price, price) == 0 &&
-                idUser == that.idUser &&
                 Objects.equals(checkIn, that.checkIn) &&
                 Objects.equals(checkOut, that.checkOut) &&
                 Objects.equals(dateCreate, that.dateCreate) &&
@@ -148,6 +123,6 @@ public class Reservation {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, idClient, idNumber, checkIn, checkOut, price, idUser, dateCreate, dateUpdate);
+        return Objects.hash(id, checkIn, checkOut, price,  dateCreate, dateUpdate);
     }
 }

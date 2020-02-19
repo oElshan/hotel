@@ -12,10 +12,8 @@ public class Client {
     private int id;
     private int name;
     private Date dob;
-    private int idGender;
     private String sn;
     private Integer phone;
-    private Integer idPassport;
     private Timestamp dateCreate;
     private Timestamp dateUpdate;
     private List<Reservation> reservations;
@@ -31,8 +29,8 @@ public class Client {
         this.reservations = reservations;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_passport",nullable = false)
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_client")
     public Passport getPassport() {
         return passport;
     }
@@ -83,16 +81,6 @@ public class Client {
     }
 
     @Basic
-    @Column(name = "id_gender")
-    public int getIdGender() {
-        return idGender;
-    }
-
-    public void setIdGender(int idGender) {
-        this.idGender = idGender;
-    }
-
-    @Basic
     @Column(name = "sn")
     public String getSn() {
         return sn;
@@ -112,15 +100,7 @@ public class Client {
         this.phone = phone;
     }
 
-    @Basic
-    @Column(name = "id_passport")
-    public Integer getIdPassport() {
-        return idPassport;
-    }
 
-    public void setIdPassport(Integer idPassport) {
-        this.idPassport = idPassport;
-    }
 
     @Basic
     @Column(name = "date_create")
@@ -149,17 +129,15 @@ public class Client {
         Client client = (Client) o;
         return id == client.id &&
                 name == client.name &&
-                idGender == client.idGender &&
                 Objects.equals(dob, client.dob) &&
                 Objects.equals(sn, client.sn) &&
                 Objects.equals(phone, client.phone) &&
-                Objects.equals(idPassport, client.idPassport) &&
                 Objects.equals(dateCreate, client.dateCreate) &&
                 Objects.equals(dateUpdate, client.dateUpdate);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, dob, idGender, sn, phone, idPassport, dateCreate, dateUpdate);
+        return Objects.hash(id, name, dob, sn, phone, dateCreate, dateUpdate);
     }
 }

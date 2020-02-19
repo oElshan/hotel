@@ -9,12 +9,10 @@ import java.util.Objects;
 @Table(name = "booking")
 public class Booking {
     private int id;
-    private int idNumber;
     private Timestamp checkIn;
     private Date checkOut;
     private int name;
     private String phone;
-    private int idUser;
     private Timestamp dateCreate;
     private Timestamp dateUpdate;
     private Users users;
@@ -51,15 +49,6 @@ public class Booking {
         this.id = id;
     }
 
-    @Basic
-    @Column(name = "id_number")
-    public int getIdNumber() {
-        return idNumber;
-    }
-
-    public void setIdNumber(int idNumber) {
-        this.idNumber = idNumber;
-    }
 
     @Basic
     @Column(name = "check_in")
@@ -101,15 +90,7 @@ public class Booking {
         this.phone = phone;
     }
 
-    @Basic
-    @Column(name = "id_user")
-    public int getIdUser() {
-        return idUser;
-    }
 
-    public void setIdUser(int idUser) {
-        this.idUser = idUser;
-    }
 
     @Basic
     @Column(name = "date_create")
@@ -136,10 +117,8 @@ public class Booking {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Booking booking = (Booking) o;
-        return id == booking.id &&
-                idNumber == booking.idNumber &&
-                name == booking.name &&
-                idUser == booking.idUser &&
+        return id == booking.id  &&
+                name == booking.name  &&
                 Objects.equals(checkIn, booking.checkIn) &&
                 Objects.equals(checkOut, booking.checkOut) &&
                 Objects.equals(phone, booking.phone) &&
@@ -149,6 +128,6 @@ public class Booking {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, idNumber, checkIn, checkOut, name, phone, idUser, dateCreate, dateUpdate);
+        return Objects.hash(id, checkIn, checkOut, name, phone,  dateCreate, dateUpdate);
     }
 }

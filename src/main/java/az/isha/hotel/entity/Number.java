@@ -14,7 +14,6 @@ public class Number {
     private int seats;
     private double price;
     private String info;
-    private int idStatus;
     private Timestamp dateCreate;
     private Timestamp dateUpdate;
     private List<Guests> guests;
@@ -119,15 +118,6 @@ public class Number {
         this.info = info;
     }
 
-    @Basic
-    @Column(name = "id_status")
-    public int getIdStatus() {
-        return idStatus;
-    }
-
-    public void setIdStatus(int idStatus) {
-        this.idStatus = idStatus;
-    }
 
     @Basic
     @Column(name = "date_create")
@@ -157,8 +147,7 @@ public class Number {
         return id == number.id &&
                 rooms == number.rooms &&
                 seats == number.seats &&
-                Double.compare(number.price, price) == 0 &&
-                idStatus == number.idStatus &&
+                Double.compare(number.price, price) == 0  &&
                 Objects.equals(name, number.name) &&
                 Objects.equals(info, number.info) &&
                 Objects.equals(dateCreate, number.dateCreate) &&
@@ -167,6 +156,6 @@ public class Number {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, rooms, seats, price, info, idStatus, dateCreate, dateUpdate);
+        return Objects.hash(id, name, rooms, seats, price, info,  dateCreate, dateUpdate);
     }
 }

@@ -8,7 +8,6 @@ import java.util.Objects;
 @Table(name = "guests")
 public class Guests {
     private int id;
-    private int idNumber;
     private String name;
     private String sn;
     private Timestamp checkIn;
@@ -39,15 +38,6 @@ public class Guests {
         this.id = id;
     }
 
-    @Basic
-    @Column(name = "id_number")
-    public int getIdNumber() {
-        return idNumber;
-    }
-
-    public void setIdNumber(int idNumber) {
-        this.idNumber = idNumber;
-    }
 
     @Basic
     @Column(name = "name")
@@ -115,7 +105,6 @@ public class Guests {
         if (o == null || getClass() != o.getClass()) return false;
         Guests guests = (Guests) o;
         return id == guests.id &&
-                idNumber == guests.idNumber &&
                 Objects.equals(name, guests.name) &&
                 Objects.equals(sn, guests.sn) &&
                 Objects.equals(checkIn, guests.checkIn) &&
@@ -126,6 +115,6 @@ public class Guests {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, idNumber, name, sn, checkIn, сheckOut, dateCreate, dateUpdate);
+        return Objects.hash(id, name, sn, checkIn, сheckOut, dateCreate, dateUpdate);
     }
 }

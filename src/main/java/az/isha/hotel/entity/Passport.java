@@ -7,9 +7,25 @@ import java.util.Objects;
 @Table(name = "passport")
 public class Passport {
     private int id;
-    private int idClient;
     private String path;
-    // TODO: 2020-02-18 ввести свзязь!!
+    private Client client;
+
+
+
+    @OneToOne(
+            mappedBy = "passport",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true,
+            fetch = FetchType.LAZY
+    )
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
+
 
 
     @Id
@@ -23,15 +39,6 @@ public class Passport {
         this.id = id;
     }
 
-    @Basic
-    @Column(name = "id_client")
-    public int getIdClient() {
-        return idClient;
-    }
-
-    public void setIdClient(int idClient) {
-        this.idClient = idClient;
-    }
 
     @Basic
     @Column(name = "path")
@@ -49,12 +56,11 @@ public class Passport {
         if (o == null || getClass() != o.getClass()) return false;
         Passport passport = (Passport) o;
         return id == passport.id &&
-                idClient == passport.idClient &&
                 Objects.equals(path, passport.path);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, idClient, path);
+        return Objects.hash(id, path);
     }
 }
