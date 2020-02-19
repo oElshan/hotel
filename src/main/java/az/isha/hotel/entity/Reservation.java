@@ -14,16 +14,16 @@ public class Reservation {
     private Timestamp dateUpdate;
     private Client client;
     private Number number;
-    private Users users;
+    private User user;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_user")
-    public Users getUsers() {
-        return users;
+    public User getUser() {
+        return user;
     }
 
-    public void setUsers(Users users) {
-        this.users = users;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     @ManyToOne(fetch = FetchType.LAZY)

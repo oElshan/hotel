@@ -21,7 +21,7 @@ import java.util.Properties;
 
 
 @Configuration
-@EnableJpaRepositories
+@EnableJpaRepositories(basePackages = "az.isha.hotel.repository")
 @EnableTransactionManagement
 @ComponentScan("az.isha.hotel.*")
 @PropertySource("classpath:application.properties")
@@ -48,7 +48,7 @@ public class RootConfig {
         adapter.setDatabase(Database.MYSQL);
         adapter.setShowSql(false);
         adapter.setGenerateDdl(true);
-        adapter.setDatabasePlatform("org.hibernate.dialect.MySQLDialect");
+        adapter.setDatabasePlatform("org.hibernate.dialect.MySQL5Dialect");
         return adapter;
     }
     @Bean

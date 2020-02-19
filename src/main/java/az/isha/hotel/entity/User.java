@@ -7,7 +7,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "users")
-public class Users {
+public class User {
     private int id;
     private String name;
     private String login;
@@ -16,18 +16,18 @@ public class Users {
     private Timestamp dateUpdate;
     private Roles roles;
     private List<Booking> bookings;
-    private List<Users> users;
+    private List<Reservation> reservations;
 
-    @OneToMany(mappedBy = "users",fetch = FetchType.LAZY,cascade = {CascadeType.MERGE,CascadeType.PERSIST})
-    public List<Users> getUsers() {
-        return users;
+    @OneToMany(mappedBy = "user",fetch = FetchType.LAZY,cascade = {CascadeType.MERGE,CascadeType.PERSIST})
+    public List<Reservation> getReservations() {
+        return reservations;
     }
 
-    public void setUsers(List<Users> users) {
-        this.users = users;
+    public void setReservations(List<Reservation> reservations) {
+        this.reservations = reservations;
     }
 
-    @OneToMany(mappedBy = "users",fetch = FetchType.LAZY,cascade = {CascadeType.MERGE,CascadeType.PERSIST})
+    @OneToMany(mappedBy = "user",fetch = FetchType.LAZY,cascade = {CascadeType.MERGE,CascadeType.PERSIST})
     public List<Booking> getBookings() {
         return bookings;
     }
@@ -111,13 +111,13 @@ public class Users {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Users users = (Users) o;
-        return id == users.id &&
-                Objects.equals(name, users.name) &&
-                Objects.equals(login, users.login) &&
-                Objects.equals(password, users.password) &&
-                Objects.equals(dateCreate, users.dateCreate) &&
-                Objects.equals(dateUpdate, users.dateUpdate);
+        User user = (User) o;
+        return id == user.id &&
+                Objects.equals(name, user.name) &&
+                Objects.equals(login, user.login) &&
+                Objects.equals(password, user.password) &&
+                Objects.equals(dateCreate, user.dateCreate) &&
+                Objects.equals(dateUpdate, user.dateUpdate);
     }
 
     @Override

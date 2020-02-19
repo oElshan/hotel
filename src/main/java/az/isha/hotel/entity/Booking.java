@@ -15,7 +15,7 @@ public class Booking {
     private String phone;
     private Timestamp dateCreate;
     private Timestamp dateUpdate;
-    private Users users;
+    private User user;
     private Number number;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -30,12 +30,12 @@ public class Booking {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_user",nullable = false)
-    public Users getUsers() {
-        return users;
+    public User getUser() {
+        return user;
     }
 
-    public void setUsers(Users users) {
-        this.users = users;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     @Id

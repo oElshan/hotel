@@ -12,14 +12,21 @@ public class Roles {
     private String name;
     private Timestamp dateCreate;
     private Timestamp dateUpdate;
-    private List<Users> users;
+    private List<User> users;
+
+    public Roles(String name) {
+        this.name = name;
+    }
+
+    public Roles() {
+    }
 
     @OneToMany(mappedBy = "roles",fetch = FetchType.LAZY,cascade = {CascadeType.MERGE,CascadeType.PERSIST})
-    public List<Users> getUsers() {
+    public List<User> getUsers() {
         return users;
     }
 
-    public void setUsers(List<Users> users) {
+    public void setUsers(List<User> users) {
         this.users = users;
     }
 
