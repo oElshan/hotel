@@ -39,9 +39,8 @@
             </form>
             <ul class="nav navbar-nav navbar-right">
                 <!--&lt;!&ndash;<li><a class="btn btn-default" href="/sign-in">Sign in</a></li>&ndash;&gt;-->
-                <li sec:authorize="isAnonymous()">
-                    <a href="/sign-in" class="btn sign-in btn-success">Sign in</a>
-                </li>
+                    <a sec:authorize="isAnonymous()" href="/sign-in" class="btn sign-in btn-success">Sign in</a>
+                    <a sec:authorize="isAuthenticated()" href="/logout" class="btn sign-in btn-success">Logout</a>
 
 
                 <!--<li class="dropdown">-->
