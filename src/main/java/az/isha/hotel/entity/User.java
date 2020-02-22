@@ -8,7 +8,7 @@ import java.util.Objects;
 @Entity
 @Table(name = "users")
 public class User {
-    private int id;
+    private Long id;
     private String name;
     private String login;
     private String password;
@@ -36,7 +36,7 @@ public class User {
         this.bookings = bookings;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_role",nullable = false)
     public Roles getRoles() {
         return roles;
@@ -48,11 +48,11 @@ public class User {
 
     @Id
     @Column(name = "id")
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

@@ -6,4 +6,4 @@ target
 *.war
 *.ear
 .idea
-.DS_Storegit
+.DS_Store

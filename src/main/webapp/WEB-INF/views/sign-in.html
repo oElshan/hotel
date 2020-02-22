@@ -5,47 +5,68 @@
 
 <body>
 <div th:replace="include :: navbar"> </div>
-<div class="container-fluid siginUp">
-    <!--<div class="row ">	-->
-    <!--<a class="logo h1" href="/" alt="Resume"><img src="" >Resume</a>-->
+<!--<div class="container-fluid siginUp">-->
+    <!--&lt;!&ndash;<div class="row ">	&ndash;&gt;-->
+    <!--&lt;!&ndash;<a class="logo h1" href="/" alt="Resume"><img src="" >Resume</a>&ndash;&gt;-->
+
+    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+    <!--<div class="row ">-->
+
+        <!--<div class="panel panel-default  signUpPanel col-lg-4 col-md-6 col-lg-offset-4 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-12 c "  >-->
+
+            <!--<div class="panel-heading signUp">-->
+                <!--<h4 class="panel-title text-center regText" >-->
+                    <!--<span class="glyphicon glyphicon-user " aria-hidden="true"></span>-->
+                    <!--Вход в Ваш личный кибинет-->
+                <!--</h4>-->
+            <!--</div>-->
+
+            <!--<div class="signUpForm">-->
+                <!--<form class="sign-up" th:action="@{/login}"  method="post" >-->
+                    <!--<div class="form-group">-->
+                        <!--<label for="login">Login</label>-->
+                        <!--<input type="text" class="form-control" id="login" placeholder="login" name="login">-->
+                    <!--</div>-->
+                    <!--<div class="form-group">-->
+                        <!--<label for="password">Password</label>-->
+                        <!--<input type="text" class="form-control" id="password" placeholder="password" name="password">-->
+                    <!--</div>-->
+                    <!--<div class="form-group">-->
+                        <!--<label for="rememberMe">Запомнить меня</label>-->
+                        <!--<input type="checkbox" class="form-inline" id="rememberMe" >-->
+                    <!--</div>-->
+                    <!--<button type="submit" class="btn btn-success btn-lg " id="submitSignUp" >Log in</button>-->
+                <!--</form>-->
+
+            <!--</div>-->
+        <!--</div>-->
+
 
     <!--</div>-->
 
-    <div class="row ">
+<!--</div>-->
 
-        <div class="panel panel-default  signUpPanel col-lg-4 col-md-6 col-lg-offset-4 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-12 c "  >
+<div class="container">
 
-            <div class="panel-heading signUp">
-                <h4 class="panel-title text-center regText" >
-                    <span class="glyphicon glyphicon-user " aria-hidden="true"></span>
-                    Вход в Ваш личный кибинет
-                </h4>
+    <div class="row login col-lg-4 col-md-4 col-lg-offset-4 col-md-offset-4 col-sm-8 col-sm-offset-2 col-xs-12 ">
+        <form class="form-signin" th:action="@{/login}" method="post">
+            <h2 class="form-signin-heading">Please sign in</h2>
+            <p th:if="${loginError}" class="alert-danger">Wrong user or password</p>
+            <label for="inputLogin" class="sr-only">Login</label>
+            <input type="text" id="inputLogin" class="form-control" placeholder="login" name="login" required autofocus>
+            <label for="inputPassword" class="sr-only">Password</label>
+            <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password" required>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" value="remember-me"> Remember me
+                </label>
             </div>
-
-            <div class="signUpForm">
-                <form class="sign-up" th:action="@{/sign-in}" th:object="${signIn}"  method="post" >
-                    <div class="form-group">
-                        <label for="email">Login</label>
-                        <input type="text" class="form-control" id="email" placeholder="email" name="email">
-                    </div>
-                    <div class="form-group">
-                        <label for="password">Password</label>
-                        <input type="text" class="form-control" id="password" placeholder="password" name="password">
-                    </div>
-                    <div class="form-group">
-                        <label for="rememberMe">Запомнить меня</label>
-                        <input type="checkbox" class="form-inline" id="rememberMe" >
-                    </div>
-                    <button type="submit" class="btn btn-success btn-lg " id="submitSignUp" >Log in</button>
-                </form>
-
-            </div>
-        </div>
-
-
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        </form>
     </div>
 
-</div>
+</div> <!-- /container -->
 <div th:replace="include::js"></div>
 </body>
 </html>
