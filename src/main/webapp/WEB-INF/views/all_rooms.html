@@ -87,16 +87,11 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        <!--<tr th:each="prod : ${prods}">-->
-                                            <!--<td th:text="${prod.name}">Onions</td>-->
-                                            <!--<td th:text="${prod.price}">2.41</td>-->
-                                            <!--<td th:text="${prod.inStock}? #{true} : #{false}">yes</td>-->
-                                        <!--</tr>-->
 											<tr class="odd gradeX" th:each="rooms : ${roomsList}">
 												<td class="center" th:text="${rooms.number}"></td>
 												<td class="center" th:text="${rooms.type}"></td>
-												<td class="center" th:if="${rooms.ac}" th:text="AC"></td>
-												<!--<td class="center" th:if="${rooms.isAc()} ==false" th:text="Non AC"></td>-->
+												<td class="center" th:if="${rooms.ac}">Ac</td>
+												<td class="center" th:unless="${rooms.ac}" >Non Ac</td>
 												<td class="center" th:text="${rooms.seats}"></td>
                                                 <td class="center" th:text="${rooms.phone}"></td>
                                                 <td class="center" th:text="${rooms.price}+'$'"></td>
