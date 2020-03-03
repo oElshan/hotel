@@ -13,7 +13,7 @@ public class Reservation {
     private Timestamp dateCreate;
     private Timestamp dateUpdate;
     private Client client;
-    private Number number;
+    private Rooms rooms;
     private User user;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -38,12 +38,12 @@ public class Reservation {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_number",nullable = false)
-    public Number getNumber() {
-        return number;
+    public Rooms getRooms() {
+        return rooms;
     }
 
-    public void setNumber(Number number) {
-        this.number = number;
+    public void setRooms(Rooms rooms) {
+        this.rooms = rooms;
     }
 
     @Id

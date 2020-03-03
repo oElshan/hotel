@@ -25,23 +25,22 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
 
         http
+                .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/","/static/**","/sign-in").permitAll()
-                .antMatchers("/admin","/admin/**").hasRole("ADMIN")
-                .antMatchers("/user/**").hasRole("USER")
+                .antMatchers("/static/**").permitAll()
+                .antMatchers("/**").hasAnyAuthority("ADMIN","USER")
                 .anyRequest().authenticated();
         http
                 .formLogin()
-                .loginPage("/sign-in")
-                .loginProcessingUrl("/login")
-                .defaultSuccessUrl("/profile")
-                .usernameParameter("login")
+                .permitAll()
+                .loginPage("/login")
+                .loginProcessingUrl("/sign-in")
+                .defaultSuccessUrl("/")
+                .usernameParameter("username")
                 .passwordParameter("password")
-                .failureUrl("/sign-in-failed")
-                .permitAll();
+                .failureUrl("/sign-in-failed");
         http
                 .logout()
-                .permitAll()
 //                .logoutUrl("/logout")
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout", "GET"))
                 .clearAuthentication(true)

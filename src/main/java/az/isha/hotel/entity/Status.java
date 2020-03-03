@@ -9,15 +9,15 @@ import java.util.Objects;
 public class Status {
     private int id;
     private String status;
-    private List<Number> numbers;
+    private List<Rooms> rooms;
 
     @OneToMany(mappedBy = "status",fetch = FetchType.LAZY,cascade = {CascadeType.MERGE,CascadeType.PERSIST})
-    public List<Number> getNumbers() {
-        return numbers;
+    public List<Rooms> getRooms() {
+        return rooms;
     }
 
-    public void setNumbers(List<Number> numbers) {
-        this.numbers = numbers;
+    public void setRooms(List<Rooms> rooms) {
+        this.rooms = rooms;
     }
 
     @Id

@@ -1,7 +1,6 @@
 package az.isha.hotel.entity;
 
 import javax.persistence.*;
-import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.Objects;
 
@@ -10,22 +9,34 @@ import java.util.Objects;
 public class Booking {
     private int id;
     private Timestamp checkIn;
-    private Date checkOut;
-    private int name;
+    private Timestamp checkOut;
+    private String name;
     private String phone;
     private Timestamp dateCreate;
     private Timestamp dateUpdate;
+    private String email;
     private User user;
-    private Number number;
+    private Rooms rooms;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_number",nullable = false)
-    public Number getNumber() {
-        return number;
+
+    @Basic
+    @Column(name = "email")
+    public String getEmail() {
+        return email;
     }
 
-    public void setNumber(Number number) {
-        this.number = number;
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_rooms",nullable = false)
+    public Rooms getRooms() {
+        return rooms;
+    }
+
+    public void setRooms(Rooms rooms) {
+        this.rooms = rooms;
     }
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -62,21 +73,21 @@ public class Booking {
 
     @Basic
     @Column(name = "check_out")
-    public Date getCheckOut() {
+    public Timestamp getCheckOut() {
         return checkOut;
     }
 
-    public void setCheckOut(Date checkOut) {
+    public void setCheckOut(Timestamp checkOut) {
         this.checkOut = checkOut;
     }
 
     @Basic
     @Column(name = "name")
-    public int getName() {
+    public String getName() {
         return name;
     }
 
-    public void setName(int name) {
+    public void setName(String name) {
         this.name = name;
     }
 
@@ -118,7 +129,7 @@ public class Booking {
         if (o == null || getClass() != o.getClass()) return false;
         Booking booking = (Booking) o;
         return id == booking.id  &&
-                name == booking.name  &&
+                Objects.equals(name, booking.name)  &&
                 Objects.equals(checkIn, booking.checkIn) &&
                 Objects.equals(checkOut, booking.checkOut) &&
                 Objects.equals(phone, booking.phone) &&

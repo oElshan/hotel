@@ -10,9 +10,11 @@ import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.*;
 import org.thymeleaf.extras.springsecurity5.dialect.SpringSecurityDialect;
+import org.thymeleaf.spring4.dialect.SpringStandardDialect;
 import org.thymeleaf.spring5.SpringTemplateEngine;
 import org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring5.view.ThymeleafViewResolver;
+import org.thymeleaf.standard.StandardDialect;
 
 
 @EnableWebMvc
@@ -25,9 +27,12 @@ public class WebConfig  implements WebMvcConfigurer {
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/fonts/**").addResourceLocations("/static/fonts/");
-        registry.addResourceHandler("/css/**").addResourceLocations("/static/css/");
-        registry.addResourceHandler("/js/**").addResourceLocations("/static/js/");
+//        registry.addResourceHandler("/fonts/**").addResourceLocations("/static/fonts/");
+//        registry.addResourceHandler("/css/**").addResourceLocations("/static/css/");
+//        registry.addResourceHandler("/js/**").addResourceLocations("/static/js");
+//        registry.addResourceHandler("/plugins/**").addResourceLocations("/static/plugins/");
+
+        registry.addResourceHandler("/static/**").addResourceLocations("/static/");
 
     }
 

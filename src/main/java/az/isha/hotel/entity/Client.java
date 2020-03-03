@@ -10,7 +10,7 @@ import java.util.Objects;
 @Table(name = "client")
 public class Client {
     private int id;
-    private int name;
+    private String name;
     private Date dob;
     private String sn;
     private Integer phone;
@@ -62,11 +62,11 @@ public class Client {
 
     @Basic
     @Column(name = "name")
-    public int getName() {
+    public String getName() {
         return name;
     }
 
-    public void setName(int name) {
+    public void setName(String name) {
         this.name = name;
     }
 
@@ -128,7 +128,7 @@ public class Client {
         if (o == null || getClass() != o.getClass()) return false;
         Client client = (Client) o;
         return id == client.id &&
-                name == client.name &&
+                Objects.equals(name, client.name)&&
                 Objects.equals(dob, client.dob) &&
                 Objects.equals(sn, client.sn) &&
                 Objects.equals(phone, client.phone) &&
