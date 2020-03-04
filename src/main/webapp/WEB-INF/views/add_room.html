@@ -38,16 +38,13 @@
 								<div class="card-body row">
 						            <div class="col-lg-6 p-t-20"> 
 						              <div class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
-					                     <input class = "mdl-textfield__input" type = "text" id = "txtRoomNo">
+					                     <input class = "mdl-textfield__input" type = "text" id = "txtRoomNo" name="number">
 					                     <label class = "mdl-textfield__label">Room Number</label>
 					                  </div>
 						            </div>
 						            <div class="col-lg-6 p-t-20"> 
 						              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fix-height txt-full-width">
-								            <input class="mdl-textfield__input" type="text" id="list3" value="" readonly tabIndex="-1">
-								            <label for="list3" class="pull-right margin-0">
-								                <i class="mdl-icon-toggle__label material-icons">keyboard_arrow_down</i>
-								            </label>
+								            <input class="mdl-textfield__input" type="text" id="list3" readonly tabIndex="-1" name="type">
 								            <label for="list3" class="mdl-textfield__label">Room Type</label>
 								            <ul data-mdl-for="list3" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
 								                <li class="mdl-menu__item" data-val="1">Single</li>
@@ -62,10 +59,7 @@
 						           	</div>
 						           	<div class="col-lg-6 p-t-20"> 
 						              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fix-height txt-full-width">
-								            <input class="mdl-textfield__input" type="text" id="sample2" value="" readonly tabIndex="-1">
-								            <label for="sample2" class="pull-right margin-0">
-								                <i class="mdl-icon-toggle__label material-icons">keyboard_arrow_down</i>
-								            </label>
+								            <input class="mdl-textfield__input" type="text" id="sample2" name="ac" readonly tabIndex="-1">
 								            <label for="sample2" class="mdl-textfield__label">AC/Non AC</label>
 								            <ul data-mdl-for="sample2" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
 								                <li class="mdl-menu__item" data-val="DE">AC</li>
@@ -75,10 +69,7 @@
 						            </div>
 						           	<div class="col-lg-6 p-t-20">
 						              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fix-height txt-full-width">
-								            <input class="mdl-textfield__input" type="text" id="list2" value="" readonly tabIndex="-1">
-								            <label for="list2" class="pull-right margin-0">
-								                <i class="mdl-icon-toggle__label material-icons">keyboard_arrow_down</i>
-								            </label>
+								            <input class="mdl-textfield__input" type="text" id="list2" name="seats" readonly tabIndex="-1">
 								            <label for="list2" class="mdl-textfield__label">Bad Capacity</label>
 								            <ul data-mdl-for="list2" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
 								                <li class="mdl-menu__item" data-val="1">1</li>
@@ -95,7 +86,7 @@
 						           	<div class="col-lg-6 p-t-20">
 						               <div class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
 					                     <input class = "mdl-textfield__input" type = "text" 
-					                        pattern = "-?[0-9]*(\.[0-9]+)?" id = "text8">
+					                        pattern = "-?[0-9]*(\.[0-9]+)?" id = "text8" name="phone">
 					                     <label class = "mdl-textfield__label" for = "text8">Telephone Number</label>
 					                     <span class = "mdl-textfield__error">Number required!</span>
 					                  </div>
@@ -103,7 +94,7 @@
 						            <div class="col-lg-6 p-t-20">
 						               <div class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
 					                     <input class = "mdl-textfield__input" type = "text" 
-					                        pattern = "-?[0-9]*(\.[0-9]+)?" id = "text7">
+					                        pattern = "-?[0-9]*(\.[0-9]+)?" id = "text7" name="price">
 					                     <label class = "mdl-textfield__label" for = "text7">Rent Per Night</label>
 					                     <span class = "mdl-textfield__error">Number required!</span>
 					                  </div>
@@ -111,7 +102,7 @@
                                        <div class="col-lg-12 p-t-20">
 						              <div class = "mdl-textfield mdl-js-textfield txt-full-width">
 					                     <textarea class = "mdl-textfield__input" rows =  "4"
-					                        id = "education" ></textarea>
+					                        id = "education" name="info"></textarea>
 					                     <label class = "mdl-textfield__label" for = "text7">Room Details</label>
 					                  </div>
 							         </div>

@@ -13,7 +13,7 @@ public class Rooms {
     private int seats;
     private float price;
     private String info;
-    private boolean ac;
+    private String ac;
     private String phone;
     private String type;
     private Timestamp dateCreate;
@@ -25,7 +25,7 @@ public class Rooms {
 
 
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_status",nullable = false)
     public Status getStatus() {
         return status;
@@ -115,11 +115,11 @@ public class Rooms {
 
     @Basic
     @Column(name = "ac")
-    public boolean isAc() {
+    public String getAc() {
         return ac;
     }
 
-    public void setAc(boolean ac) {
+    public void setAc(String ac) {
         this.ac = ac;
     }
     @Basic
