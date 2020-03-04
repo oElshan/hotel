@@ -18,6 +18,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -32,8 +33,8 @@ public class WelcomeController {
     RoomService roomService;
 
     @GetMapping(value = "/")
-    public String handleRequest(@AuthenticationPrincipal CurrentUser currentUser,Model model) {
-        model.addAttribute("currentUser",currentUser);
+    public String handleRequest(@AuthenticationPrincipal CurrentUser currentUser, HttpSession httpSession, Model model) {
+        httpSession.setAttribute("currentUser", currentUser);
         System.out.println(currentUser.getLogin());
         return "user_profile";
     }
@@ -45,39 +46,33 @@ public class WelcomeController {
     }
 
     @RequestMapping(value = "/dashboard")
-    public String dashboard(@AuthenticationPrincipal CurrentUser currentUser, Model model) {
-        model.addAttribute("currentUser",currentUser);
+    public String dashboard( Model model) {
         return "dashboard";
     }
 
     @RequestMapping(value = "/new_booking")
-    public String newBooking(@AuthenticationPrincipal CurrentUser currentUser, Model model) {
-        model.addAttribute("currentUser",currentUser);
+    public String newBooking(Model model) {
         return "new_booking";
     }
 
     @RequestMapping(value = "/view_booking")
-    public String viewBooking(@AuthenticationPrincipal CurrentUser currentUser, Model model) {
-        model.addAttribute("currentUser",currentUser);
+    public String viewBooking( Model model) {
         return "view_booking";
     }
 
     @RequestMapping(value = "/edit_booking")
-    public String editBooking(@AuthenticationPrincipal CurrentUser currentUser, Model model) {
-        model.addAttribute("currentUser",currentUser);
+    public String editBooking( Model model) {
         return "edit_booking";
     }
 
     @RequestMapping(value = "/add_room")
-    public String addRoom(@AuthenticationPrincipal CurrentUser currentUser, Model model) {
-        model.addAttribute("currentUser",currentUser);
+    public String addRoom(Model model) {
         return "add_room";
     }
 
     @RequestMapping(value = "/all_room")
-    public String allRoom(@AuthenticationPrincipal CurrentUser currentUser, Model model) {
+    public String allRoom( Model model) {
 
-        model.addAttribute("currentUser",currentUser);
         List<Rooms> list = roomService.getAll();
         for (Rooms rooms : list) {
             System.out.println(rooms.toString());
@@ -88,26 +83,22 @@ public class WelcomeController {
     }
 
     @RequestMapping(value = "/edit_room")
-    public String editRoom(@AuthenticationPrincipal CurrentUser currentUser, Model model) {
-        model.addAttribute("currentUser",currentUser);
+    public String editRoom(Model model) {
         return "edit_room";
     }
 
     @RequestMapping(value = "/add_staff")
-    public String addStaff(@AuthenticationPrincipal CurrentUser currentUser, Model model) {
-        model.addAttribute("currentUser",currentUser);
+    public String addStaff(Model model) {
         return "add_staff";
     }
 
     @RequestMapping(value = "/all_staffs")
-    public String allStaff(@AuthenticationPrincipal CurrentUser currentUser, Model model) {
-        model.addAttribute("currentUser",currentUser);
+    public String allStaff( Model model) {
         return "all_staffs";
     }
 
     @RequestMapping(value = "/edit_staff")
-    public String editStaff(@AuthenticationPrincipal CurrentUser currentUser, Model model) {
-        model.addAttribute("currentUser",currentUser);
+    public String editStaff( Model model) {
         return "edit_staff";
     }
 

@@ -71,7 +71,8 @@
                 <li class="dropdown dropdown-user" >
                     <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
                         <!--<img alt="" class="img-responsive " src="/static/img/avatar.jpeg" />-->
-                        <span th:text="${currentUser.login}" class="username username-hide-on-mobile"> John </span>
+                        <span th:text="${session.currentUser.login}" class="username username-hide-on-mobile"> John </span>
+                        <!--<span th:text="${currentUser.login}" class="username username-hide-on-mobile"> John </span>-->
                         <i class="fa fa-angle-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-default animated jello">
@@ -128,8 +129,8 @@
                                 <img src="/static/img/avatar200x.jpg" class="img-responsive" alt=""> </div>
                         </div>
                         <div class="profile-usertitle">
-                            <div th:text="${currentUser.login}" class="sidebar-userpic-name"> John Deo </div>
-                            <div th:text="${currentUser.ROLES}" class="profile-usertitle-job"> Manager </div>
+                            <div th:text="${session.currentUser.login}" class="sidebar-userpic-name"> John Deo </div>
+                            <div th:text="${session.currentUser.ROLES}" class="profile-usertitle-job"> Manager </div>
                         </div>
                         <div class="sidebar-userpic-btn">
                             <a class="tooltips" href="/" data-placement="top" data-original-title="Profile">
