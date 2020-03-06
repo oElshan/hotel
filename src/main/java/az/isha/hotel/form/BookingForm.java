@@ -5,23 +5,28 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
-public class NewBookingForm {
+public class BookingForm {
 
-    @NotNull
-    @Size(max = 100)
+    @NotNull(message = "not null")
+    @Size(max = 50,message = "max size  = 50  ")
     private String fullName;
     @Email
-    @Size(max = 100)
+    @Size(max = 50)
     private String email;
     private String gender;
-    @Pattern(regexp = "([0-9]+) ", message = "Ошибка заполнения номера")
-    private String mobileNumber;
+    @NotNull
+    @Pattern(regexp = "^([0-9]+)$", message = "Ошибка заполнения номера")
+    private String phone;
+    @NotNull
     @Pattern(regexp = "^[0-9]{4}-[0-9]{2}-[0-9]{2}$", message = "ошибка даты")
     private String arrive;
+    @NotNull
     @Pattern(regexp = "^[0-9]{4}-[0-9]{2}-[0-9]{2}$", message = "ошибка даты")
     private String depart;
-    private Integer noOfPersons;
-    private String roomType;
+    @NotNull(message = "not null")
+    private Integer seats;
+    @NotNull(message = "not null")
+    private String type;
     private String address;
     private String comment;
 
@@ -50,12 +55,12 @@ public class NewBookingForm {
         this.gender = gender;
     }
 
-    public String getMobileNumber() {
-        return mobileNumber;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setMobileNumber(String mobileNumber) {
-        this.mobileNumber = mobileNumber;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public String getArrive() {
@@ -74,20 +79,20 @@ public class NewBookingForm {
         this.depart = depart;
     }
 
-    public Integer getNoOfPersons() {
-        return noOfPersons;
+    public Integer getSeats() {
+        return seats;
     }
 
-    public void setNoOfPersons(Integer noOfPersons) {
-        this.noOfPersons = noOfPersons;
+    public void setSeats(Integer seats) {
+        this.seats = seats;
     }
 
-    public String getRoomType() {
-        return roomType;
+    public String getType() {
+        return type;
     }
 
-    public void setRoomType(String roomType) {
-        this.roomType = roomType;
+    public void setType(String type) {
+        this.type = type;
     }
 
     public String getAddress() {
@@ -108,15 +113,15 @@ public class NewBookingForm {
 
     @Override
     public String toString() {
-        return "NewBookingForm{" +
+        return "BookingForm{" +
                 "fullName='" + fullName + '\'' +
                 ", email='" + email + '\'' +
                 ", gender='" + gender + '\'' +
-                ", mobileNumber='" + mobileNumber + '\'' +
+                ", phone='" + phone + '\'' +
                 ", arrive=" + arrive +
                 ", depart=" + depart +
-                ", noOfPersons=" + noOfPersons +
-                ", roomType='" + roomType + '\'' +
+                ", seats=" + seats +
+                ", type='" + type + '\'' +
                 ", address='" + address + '\'' +
                 ", comment='" + comment + '\'' +
                 '}';

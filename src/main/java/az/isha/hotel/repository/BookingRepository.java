@@ -8,6 +8,6 @@ import java.util.List;
 public interface BookingRepository extends CrudRepository<Booking, Long> {
 
 
-    Booking findBookingBy();
+    List<Booking> findAll();
 
 }

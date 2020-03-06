@@ -34,18 +34,20 @@
                     </div>
                      <div class="row">
 						<div class="col-sm-12">
-							<form id="roomForm" class="card-box" action="/newRoom" method="post">
+							<form id="roomForm" class="card-box" action="/newRoom" th:object="${roomForm}" method="post" >
 								<div class="card-body row">
 						            <div class="col-lg-6 p-t-20"> 
 						              <div class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
 					                     <input class = "mdl-textfield__input" type = "text" id = "txtRoomNo" name="number">
 					                     <label class = "mdl-textfield__label">Room Number</label>
-					                  </div>
+										  <p th:if="*{number}" th:errorclass="alert alert-danger"></p>
+									  </div>
 						            </div>
 						            <div class="col-lg-6 p-t-20"> 
 						              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fix-height txt-full-width">
 								            <input class="mdl-textfield__input" type="text" id="list3" readonly tabIndex="-1" name="type">
-								            <label for="list3" class="mdl-textfield__label">Room Type</label>
+										  <p th:if="*{type}" th:errorclass="alert alert-danger"></p>
+										  <label for="list3" class="mdl-textfield__label">Room Type</label>
 								            <ul data-mdl-for="list3" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
 								                <li class="mdl-menu__item" data-val="1">Single</li>
 								                <li class="mdl-menu__item" data-val="2">Double</li>

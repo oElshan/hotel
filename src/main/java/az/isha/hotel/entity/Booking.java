@@ -1,23 +1,45 @@
 package az.isha.hotel.entity;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
+import java.sql.Date;
 import java.util.Objects;
 
 @Entity
 @Table(name = "booking")
 public class Booking {
-    private int id;
-    private Timestamp checkIn;
-    private Timestamp checkOut;
+    private Integer id;
+    private Date checkIn;
+    private Date checkOut;
     private String name;
     private String phone;
-    private Timestamp dateCreate;
-    private Timestamp dateUpdate;
+    private String type;
+    private Integer seats;
+    private Date dateCreate;
+    private Date dateUpdate;
     private String email;
     private User user;
     private Rooms rooms;
 
+
+    @Basic
+    @Column(name = "seats")
+    public Integer getSeats() {
+        return seats;
+    }
+
+    public void setSeats(Integer seats) {
+        this.seats = seats;
+    }
+
+    @Basic
+    @Column(name = "typeroom")
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
 
     @Basic
     @Column(name = "email")
@@ -30,7 +52,7 @@ public class Booking {
     }
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_rooms",nullable = false)
+    @JoinColumn(name = "id_rooms")
     public Rooms getRooms() {
         return rooms;
     }
@@ -52,32 +74,32 @@ public class Booking {
     @Id
     @Column(name = "id",unique = true,nullable = false)
     @GeneratedValue(strategy = GenerationType.AUTO)
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
 
     @Basic
     @Column(name = "check_in")
-    public Timestamp getCheckIn() {
+    public Date getCheckIn() {
         return checkIn;
     }
 
-    public void setCheckIn(Timestamp checkIn) {
+    public void setCheckIn(Date checkIn) {
         this.checkIn = checkIn;
     }
 
     @Basic
     @Column(name = "check_out")
-    public Timestamp getCheckOut() {
+    public Date getCheckOut() {
         return checkOut;
     }
 
-    public void setCheckOut(Timestamp checkOut) {
+    public void setCheckOut(Date checkOut) {
         this.checkOut = checkOut;
     }
 
@@ -105,21 +127,21 @@ public class Booking {
 
     @Basic
     @Column(name = "date_create")
-    public Timestamp getDateCreate() {
+    public Date getDateCreate() {
         return dateCreate;
     }
 
-    public void setDateCreate(Timestamp dateCreate) {
+    public void setDateCreate(Date dateCreate) {
         this.dateCreate = dateCreate;
     }
 
     @Basic
     @Column(name = "date_update")
-    public Timestamp getDateUpdate() {
+    public Date getDateUpdate() {
         return dateUpdate;
     }
 
-    public void setDateUpdate(Timestamp dateUpdate) {
+    public void setDateUpdate(Date dateUpdate) {
         this.dateUpdate = dateUpdate;
     }
 
@@ -128,17 +150,15 @@ public class Booking {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Booking booking = (Booking) o;
-        return id == booking.id  &&
-                Objects.equals(name, booking.name)  &&
-                Objects.equals(checkIn, booking.checkIn) &&
-                Objects.equals(checkOut, booking.checkOut) &&
+        return Objects.equals(id, booking.id) &&
+                Objects.equals(name, booking.name) &&
                 Objects.equals(phone, booking.phone) &&
-                Objects.equals(dateCreate, booking.dateCreate) &&
-                Objects.equals(dateUpdate, booking.dateUpdate);
+                Objects.equals(type, booking.type) &&
+                Objects.equals(seats, booking.seats);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, checkIn, checkOut, name, phone,  dateCreate, dateUpdate);
+        return Objects.hash(id, name, phone, type, seats);
     }
 }

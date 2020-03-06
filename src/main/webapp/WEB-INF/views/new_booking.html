@@ -23,7 +23,7 @@
                                 <div class="page-title">Add Room Booking</div>
                             </div>
                             <ol class="breadcrumb page-breadcrumb pull-right">
-                                <li><i class="fa fa-home"></i>&nbsp;<a class="parent-item" href="index.html">Home</a>&nbsp;<i class="fa fa-angle-right"></i>
+                                <li><i class="fa fa-home"></i>&nbsp;<a class="parent-item" href="/">Home</a>&nbsp;<i class="fa fa-angle-right"></i>
                                 </li>
                                 <li><a class="parent-item" href="">Booking</a>&nbsp;<i class="fa fa-angle-right"></i>
                                 </li>
@@ -37,33 +37,26 @@
 							<div class="card-box">
 								<div class="card-head">
 									<header>Add Room Booking</header>
-									<!--  class = "mdl-menu mdl-menu&#45;&#45;bottom-right mdl-js-menu mdl-js-ripple-effect"-->
-			                           <!--data-mdl-for = "panel-button">-->
-			                           <!--<li class = "mdl-menu__item"><i class="material-icons">assistant_photo</i>Action</li>-->
-			                           <!--<li class = "mdl-menu__item"><i class="material-icons">print</i>Another action</li>-->
-			                           <!--<li class = "mdl-menu__item"><i class="material-icons">favorite</i>Something else here</li>-->
-			                        <!--</ul>-->
 								</div>
-								<form id="newBookForm" class="card-body row" th:action="@{/newBooking}" method="post">
+
+								<form id="newBookForm" class="card-body row" th:action="@{/newBooking}" method="post" th:object="${bookingForm}">
 									<div class="col-lg-6 p-t-20">
 										<div class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
-											<input class = "mdl-textfield__input" type = "text" id = "txtFirstName" number="fullName">
+											<input class = "mdl-textfield__input" type = "text" id = "txtFirstName" name="fullName" th:field="*{fullName}">
 											<label class = "mdl-textfield__label">Full Name</label>
+											<p th:if="${#fields.hasErrors('fullName')}" th:errors="*{fullName}" class="alert alert-danger" ></p>
 										</div>
 									</div>
 									<div class="col-lg-6 p-t-20">
 										<div class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
-											<input class = "mdl-textfield__input" type = "email" id = "txtemail" number="email">
+											<input class = "mdl-textfield__input" type = "email" id = "txtemail" name="email">
 											<label class = "mdl-textfield__label" >Email</label>
 											<span class = "mdl-textfield__error">Enter Valid Email Address!</span>
 										</div>
 									</div>
 									<div class="col-lg-6 p-t-20">
 										<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fix-height txt-full-width">
-											<input class="mdl-textfield__input" type="text" id="sample2" number="gender" readonly tabIndex="-1">
-											<!--<label for="sample2" class="pull-right margin-0">-->
-											<!--<i class="mdl-icon-toggle__label material-icons">keyboard_arrow_down</i>-->
-											<!--</label>-->
+											<input class="mdl-textfield__input" type="text" id="sample2" name="gender" readonly tabIndex="-1">
 											<label for="sample2" class="mdl-textfield__label">Gender</label>
 											<ul data-mdl-for="sample2" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
 												<li class="mdl-menu__item" data-val="DE">Male</li>
@@ -74,29 +67,26 @@
 									<div class="col-lg-6 p-t-20">
 										<div class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
 											<input class = "mdl-textfield__input" type = "text"
-												   pattern = "-?[0-9]*(\.[0-9]+)?" id = "text5" number="mobileNumber">
+												   pattern = "-?[0-9]*(\.[0-9]+)?" id = "text5" name="phone">
 											<label class = "mdl-textfield__label" for = "text5">Mobile Number</label>
 											<span class = "mdl-textfield__error">Number required!</span>
 										</div>
 									</div>
 									<div class="col-lg-6 p-t-20">
 										<div class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
-											<input class = "mdl-textfield__input" type = "text" id = "date" number="arrive">
+											<input class = "mdl-textfield__input" type = "text" id = "date" name="arrive">
 											<label class = "mdl-textfield__label" >Arrive</label>
 										</div>
 									</div>
 									<div class="col-lg-6 p-t-20">
 										<div class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
-											<input class = "mdl-textfield__input" type = "text" id = "date1" number="depart">
+											<input class = "mdl-textfield__input" type = "text" id = "date1" name="depart">
 											<label class = "mdl-textfield__label" >Depart</label>
 										</div>
 									</div>
 									<div class="col-lg-6 p-t-20">
 										<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fix-height txt-full-width">
-											<input class="mdl-textfield__input" type="text" id="list2" number="noOfPersons" readonly tabIndex="-1">
-											<!--<label for="list2" class="pull-right margin-0">-->
-											<!--<i class="mdl-icon-toggle__label material-icons">keyboard_arrow_down</i>-->
-											<!--</label>-->
+											<input class="mdl-textfield__input" type="text" id="list2" name="seats" readonly tabIndex="-1">
 											<label for="list2" class="mdl-textfield__label">No Of Persons</label>
 											<ul data-mdl-for="list2" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
 												<li class="mdl-menu__item" data-val="1">1</li>
@@ -112,7 +102,7 @@
 									</div>
 									<div class="col-lg-6 p-t-20">
 										<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fix-height txt-full-width">
-											<input class="mdl-textfield__input" type="text" id="list3" number="type" readonly tabIndex="-1">
+											<input class="mdl-textfield__input" type="text" id="list3" name="type" readonly tabIndex="-1">
 											<label for="list3" class="pull-right margin-0">
 												<i class="mdl-icon-toggle__label material-icons">keyboard_arrow_down</i>
 											</label>
@@ -131,28 +121,14 @@
 									<div class="col-lg-12 p-t-20">
 										<div class = "mdl-textfield mdl-js-textfield txt-full-width">
 					                     <textarea class = "mdl-textfield__input" rows =  "4"
-												   id = "text7" number="address"></textarea>
+												   id = "text7" name="address"></textarea>
 											<label class = "mdl-textfield__label" for = "text7">Address</label>
 										</div>
 									</div>
-									<!--<div class="col-lg-12 p-t-20">-->
-									<!--<label class="control-label col-md-3">Upload Photo</label>-->
-									<!--<form id="id_dropzone" class="dropzone">-->
-									<!--<div class="dz-message">-->
-									<!--<div class="dropIcon">-->
-									<!--<i class="material-icons">cloud_upload</i>-->
-									<!--</div>-->
-									<!--<h3>Drop files here or click to upload.</h3>-->
-									<!--<em>(This is just a demo. Selected files are <strong>not</strong>-->
-									<!--actually uploaded.)-->
-									<!--</em>-->
-									<!--</div>-->
-									<!--</form>-->
-									<!--</div>-->
 									<div class="col-lg-12 p-t-20">
 										<div class = "mdl-textfield mdl-js-textfield txt-full-width">
 					                     <textarea class = "mdl-textfield__input" rows =  "4"
-												   id = "education"  number="comment"></textarea>
+												   id = "education"  name="comment"></textarea>
 											<label class = "mdl-textfield__label" for = "education">Comment</label>
 										</div>
 									</div>

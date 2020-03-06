@@ -1,11 +1,19 @@
 package az.isha.hotel.form;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+
 public class RoomForm {
-   private int number;
+
+    @NotNull(message = "not null")
+   private Integer number;
    private String type;
    private String ac;
+   @NotNull(message = "not null")
    private Integer seats;
+   @Pattern(regexp = "^\\d+$", message = "Invalid value")
    private String phone;
+   @NotNull(message = "not null")
    private Float price;
    private String info;
 
@@ -17,11 +25,11 @@ public class RoomForm {
         this.info = info;
     }
 
-    public int getNumber() {
+    public Integer getNumber() {
         return number;
     }
 
-    public void setNumber(int number) {
+    public void setNumber(Integer number) {
         this.number = number;
     }
 
