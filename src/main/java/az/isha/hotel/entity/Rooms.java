@@ -8,10 +8,10 @@ import java.util.Objects;
 @Entity
 @Table(name = "rooms")
 public class Rooms {
-    private int id;
+    private Integer id;
     private Integer number;
-    private int seats;
-    private float price;
+    private Integer seats;
+    private Float price;
     private String info;
     private String ac;
     private String phone;
@@ -63,12 +63,13 @@ public class Rooms {
     }
 
     @Id
-    @Column(name = "id")
-    public int getId() {
+    @Column(name = "id",unique = true,nullable = false)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -85,21 +86,21 @@ public class Rooms {
 
     @Basic
     @Column(name = "seats")
-    public int getSeats() {
+    public Integer getSeats() {
         return seats;
     }
 
-    public void setSeats(int seats) {
+    public void setSeats(Integer seats) {
         this.seats = seats;
     }
 
     @Basic
     @Column(name = "price")
-    public float getPrice() {
+    public Float getPrice() {
         return price;
     }
 
-    public void setPrice(float price) {
+    public void setPrice(Float price) {
         this.price = price;
     }
 
@@ -180,18 +181,18 @@ public class Rooms {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Rooms rooms = (Rooms) o;
-        return id == rooms.id &&
-                seats == rooms.seats &&
-                Float.compare(rooms.price, price) == 0 &&
-                ac == rooms.ac &&
+        return Objects.equals(id, rooms.id) &&
                 Objects.equals(number, rooms.number) &&
+                Objects.equals(seats, rooms.seats) &&
+                Objects.equals(price, rooms.price) &&
                 Objects.equals(info, rooms.info) &&
+                Objects.equals(ac, rooms.ac) &&
                 Objects.equals(phone, rooms.phone) &&
                 Objects.equals(type, rooms.type);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, number, seats, price, info,  dateCreate, dateUpdate);
+        return Objects.hash(id, number, seats, price, info, ac, phone, type);
     }
 }

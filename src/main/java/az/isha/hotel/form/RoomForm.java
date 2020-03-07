@@ -4,18 +4,17 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
 public class RoomForm {
-
     @NotNull(message = "not null")
-   private Integer number;
-   private String type;
-   private String ac;
-   @NotNull(message = "not null")
-   private Integer seats;
-   @Pattern(regexp = "^\\d+$", message = "Invalid value")
-   private String phone;
-   @NotNull(message = "not null")
-   private Float price;
-   private String info;
+    private Integer number;
+    @NotNull(message = "not null")
+    private String type;
+    @NotNull(message = "not null")
+    private String ac;
+    private Integer seats;
+    @Pattern(regexp = "^\\d+$", message = "Invalid value")
+    private String phone;
+    private Float price;
+    private String info;
 
     public String getInfo() {
         return info;

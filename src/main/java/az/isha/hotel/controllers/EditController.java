@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.List;
 
@@ -28,7 +29,7 @@ public class EditController {
 
     // TODO: 2020-03-05 добавить отображение
     @RequestMapping(value = "/newBooking", method = RequestMethod.POST)
-    public String newBooking(@Valid @ModelAttribute("bookingForm") BookingForm bookingForm, BindingResult bindingResult , Model model) { System.out.println(bookingForm.toString());
+    public String newBooking(@Valid @ModelAttribute("bookingForm") BookingForm bookingForm, BindingResult bindingResult , Model model) {
         logger.info(bookingForm.toString());
         if (bindingResult.hasErrors()) {
             return "new_booking";
@@ -40,10 +41,9 @@ public class EditController {
     }
 
     @RequestMapping(value = "/newRoom", method = RequestMethod.POST)
-    public String newRoom(@Valid @ModelAttribute RoomForm roomForm, Model model, BindingResult bindingResult) {
+    public String newRoom(@Valid @ModelAttribute("roomForm") RoomForm roomForm, Model model, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            model.addAttribute("roomFormError");
-            return "/add_room";
+            return "add_room";
         }
         Rooms rooms = editDataService.createRoom(roomForm);
         logger.info("Create new room"+rooms.toString());

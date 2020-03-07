@@ -74,6 +74,7 @@ public class EditDataServiceImp implements EditDataService {
 
     }
 
+    // TODO: 2020-03-06 ошибка записи в базу другой тип днныых
     @Transactional
     @Override
     public Rooms createRoom(RoomForm roomForm) {
