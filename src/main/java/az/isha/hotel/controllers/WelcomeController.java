@@ -4,6 +4,8 @@ import az.isha.hotel.entity.Booking;
 import az.isha.hotel.entity.Rooms;
 import az.isha.hotel.form.BookingForm;
 import az.isha.hotel.form.RoomForm;
+import az.isha.hotel.form.SignInForm;
+import az.isha.hotel.form.StaffForm;
 import az.isha.hotel.model.CurrentUser;
 import az.isha.hotel.services.EditDataService;
 import org.apache.logging.log4j.LogManager;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
+import java.util.Locale;
 
 @Controller
 public class WelcomeController {
@@ -28,7 +31,7 @@ public class WelcomeController {
     public String handleRequest(@AuthenticationPrincipal CurrentUser currentUser, HttpSession httpSession, Model model) {
         httpSession.setAttribute("currentUser", currentUser);
         System.out.println(currentUser.getLogin());
-        return "user_profile";
+        return "dashboard";
     }
 
 
@@ -38,25 +41,27 @@ public class WelcomeController {
     }
 
     @RequestMapping(value = "/dashboard")
-    public String dashboard( Model model) {
+    public String dashboard(Locale locale, Model model) {
         return "dashboard";
+
     }
 
     @RequestMapping(value = "/new_booking")
     public String newBooking(Model model) {
         model.addAttribute("bookingForm", new BookingForm());
-        return "new_booking";
+        return "add_booking";
     }
 
     @RequestMapping(value = "/view_booking")
     public String viewBooking( Model model) {
         List<Booking> bookingList = editDataService.getAllBooking();
         model.addAttribute("bookingList", bookingList);
-        return "view_booking";
+        return "all_booking";
     }
 
     @RequestMapping(value = "/edit_booking")
     public String editBooking( Model model) {
+
         return "edit_booking";
     }
 
@@ -85,6 +90,7 @@ public class WelcomeController {
 
     @RequestMapping(value = "/add_staff")
     public String addStaff(Model model) {
+        model.addAttribute("staffForm", new StaffForm());
         return "add_staff";
     }
 

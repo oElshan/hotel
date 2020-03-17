@@ -40,55 +40,66 @@
 								</div>
 
 								<form id="newBookForm" class="card-body row" th:action="@{/newBooking}" method="post" th:object="${bookingForm}">
-									<div class="col-lg-6 p-t-20">
+									<div class="col-lg-6 p-t-10">
 										<div class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
 											<input class = "mdl-textfield__input" type = "text" id = "txtFirstName" name="fullName" th:field="*{fullName}">
 											<label class = "mdl-textfield__label">Full Name</label>
 											<p th:if="${#fields.hasErrors('fullName')}" th:errors="*{fullName}" class="alert alert-danger" ></p>
 										</div>
 									</div>
-									<div class="col-lg-6 p-t-20">
+									<div class="col-lg-6 p-t-10">
 										<div class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
-											<input class = "mdl-textfield__input" type = "email" id = "txtemail" name="email">
+											<input class = "mdl-textfield__input" type = "email" id = "txtemail" name="email"  th:field="*{email}">
 											<label class = "mdl-textfield__label" >Email</label>
 											<span class = "mdl-textfield__error">Enter Valid Email Address!</span>
-										</div>
+                                            <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="alert alert-danger" ></p>
+
+                                        </div>
 									</div>
-									<div class="col-lg-6 p-t-20">
+									<div class="col-lg-6 p-t-10">
 										<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fix-height txt-full-width">
-											<input class="mdl-textfield__input" type="text" id="sample2" name="gender" readonly tabIndex="-1">
+											<input class="mdl-textfield__input" type="text" id="sample2" name="gender" readonly tabIndex="-1" th:field="*{gender}">
 											<label for="sample2" class="mdl-textfield__label">Gender</label>
-											<ul data-mdl-for="sample2" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
+                                            <p th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}" class="alert alert-danger" ></p>
+
+                                            <ul data-mdl-for="sample2" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
 												<li class="mdl-menu__item" data-val="DE">Male</li>
 												<li class="mdl-menu__item" data-val="BY">Female</li>
 											</ul>
 										</div>
 									</div>
-									<div class="col-lg-6 p-t-20">
+									<div class="col-lg-6 p-t-10">
 										<div class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
 											<input class = "mdl-textfield__input" type = "text"
-												   pattern = "-?[0-9]*(\.[0-9]+)?" id = "text5" name="phone">
+												   pattern = "-?[0-9]*(\.[0-9]+)?" id = "text5" name="phone" th:field="*{phone}">
 											<label class = "mdl-textfield__label" for = "text5">Mobile Number</label>
+											<p th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}" class="alert alert-danger" ></p>
 											<span class = "mdl-textfield__error">Number required!</span>
 										</div>
 									</div>
-									<div class="col-lg-6 p-t-20">
+									<div class="col-lg-6 p-t-10">
 										<div class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
-											<input class = "mdl-textfield__input" type = "text" id = "date" name="arrive">
+											<input class = "mdl-textfield__input" type = "text" id = "date" name="arrive" th:field="*{arrive}">
 											<label class = "mdl-textfield__label" >Arrive</label>
-										</div>
+                                            <p th:if="${#fields.hasErrors('arrive')}" th:errors="*{arrive}" class="alert alert-danger" ></p>
+
+                                        </div>
 									</div>
-									<div class="col-lg-6 p-t-20">
+									<div class="col-lg-6 p-t-10">
 										<div class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
-											<input class = "mdl-textfield__input" type = "text" id = "date1" name="depart">
+											<input class = "mdl-textfield__input" type = "text" id = "date1" name="depart" th:field="*{depart}">
 											<label class = "mdl-textfield__label" >Depart</label>
-										</div>
+                                            <p th:if="${#fields.hasErrors('depart')}" th:errors="*{depart}" class="alert alert-danger" ></p>
+
+                                        </div>
 									</div>
-									<div class="col-lg-6 p-t-20">
+									<div class="col-lg-6 p-t-10">
 										<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fix-height txt-full-width">
-											<input class="mdl-textfield__input" type="text" id="list2" name="seats" readonly tabIndex="-1">
+											<input class="mdl-textfield__input" type="text" id="list2" name="seats" readonly tabIndex="-1" th:field="*{seats}">
 											<label for="list2" class="mdl-textfield__label">No Of Persons</label>
-											<ul data-mdl-for="list2" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
+                                            <p th:if="${#fields.hasErrors('seats')}" th:errors="*{seats}" class="alert alert-danger" ></p>
+
+                                            <ul data-mdl-for="list2" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
 												<li class="mdl-menu__item" data-val="1">1</li>
 												<li class="mdl-menu__item" data-val="2">2</li>
 												<li class="mdl-menu__item" data-val="3">3</li>
@@ -100,7 +111,7 @@
 											</ul>
 										</div>
 									</div>
-									<div class="col-lg-6 p-t-20">
+									<div class="col-lg-6 p-t-10">
 										<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fix-height txt-full-width">
 											<input class="mdl-textfield__input" type="text" id="list3" name="type" readonly tabIndex="-1">
 											<label for="list3" class="pull-right margin-0">
@@ -118,21 +129,21 @@
 											</ul>
 										</div>
 									</div>
-									<div class="col-lg-12 p-t-20">
+									<div class="col-lg-12 p-t-10">
 										<div class = "mdl-textfield mdl-js-textfield txt-full-width">
-					                     <textarea class = "mdl-textfield__input" rows =  "4"
+					                     <textarea class = "mdl-textfield__input" rows =  "2"
 												   id = "text7" name="address"></textarea>
 											<label class = "mdl-textfield__label" for = "text7">Address</label>
 										</div>
 									</div>
-									<div class="col-lg-12 p-t-20">
+									<div class="col-lg-12 p-t-10">
 										<div class = "mdl-textfield mdl-js-textfield txt-full-width">
-					                     <textarea class = "mdl-textfield__input" rows =  "4"
+					                     <textarea class = "mdl-textfield__input" rows =  "2"
 												   id = "education"  name="comment"></textarea>
 											<label class = "mdl-textfield__label" for = "education">Comment</label>
 										</div>
 									</div>
-									<div class="col-lg-12 p-t-20 text-center">
+									<div class="col-lg-12 p-t-10 text-center">
 										<button type="submit" form="newBookForm" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect m-b-10 m-r-20 btn-pink">Submit</button>
 										<!--<button type="button" class="mdl-button mdl-js-button mdl-button&#45;&#45;raised mdl-js-ripple-effect m-b-10 btn-default">Cancel</button>-->
 									</div>

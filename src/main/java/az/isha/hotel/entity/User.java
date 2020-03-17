@@ -1,6 +1,7 @@
 package az.isha.hotel.entity;
 
 import javax.persistence.*;
+import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.List;
 import java.util.Objects;
@@ -12,9 +13,15 @@ public class User {
     private String name;
     private String login;
     private String password;
+    private String email;
+    private String phone;
+    private Date birthday;
+    private String address;
+    private String eduction;
     private Timestamp dateCreate;
     private Timestamp dateUpdate;
     private Roles roles;
+    private Gender gender;
     private List<Booking> bookings;
     private List<Reservation> reservations;
 
@@ -46,8 +53,70 @@ public class User {
         this.roles = roles;
     }
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_gender")
+    public Gender getGender() {
+        return gender;
+    }
+
+    public void setGender(Gender gender) {
+        this.gender = gender;
+    }
+
+    @Basic
+    @Column(name = "email")
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    @Basic
+    @Column(name = "phone")
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    @Basic
+    @Column(name = "birthday")
+    public Date getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
+    }
+
+    @Basic
+    @Column(name = "address")
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    @Basic
+    @Column(name = "eduction")
+    public String getEduction() {
+        return eduction;
+    }
+
+    public void setEduction(String eduction) {
+        this.eduction = eduction;
+    }
+
+
     @Id
-    @Column(name = "id")
+    @Column(name = "id",unique = true,nullable = false)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     public Long getId() {
         return id;
     }
@@ -112,16 +181,19 @@ public class User {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return id == user.id &&
+        return Objects.equals(id, user.id) &&
                 Objects.equals(name, user.name) &&
                 Objects.equals(login, user.login) &&
                 Objects.equals(password, user.password) &&
-                Objects.equals(dateCreate, user.dateCreate) &&
-                Objects.equals(dateUpdate, user.dateUpdate);
+                Objects.equals(email, user.email) &&
+                Objects.equals(phone, user.phone) &&
+                Objects.equals(birthday, user.birthday) &&
+                Objects.equals(address, user.address) &&
+                Objects.equals(eduction, user.eduction);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, login, password, dateCreate, dateUpdate);
+        return Objects.hash(id, name, login, password, email, phone, birthday, address, eduction);
     }
 }

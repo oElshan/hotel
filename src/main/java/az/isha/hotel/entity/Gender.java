@@ -10,7 +10,16 @@ public class Gender {
     private int id;
     private String name;
     private List<Client> client;
+    private List<User> users;
 
+    @OneToMany(mappedBy = "gender",fetch = FetchType.LAZY,cascade = {CascadeType.MERGE,CascadeType.PERSIST})
+    public List<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<User> users) {
+        this.users = users;
+    }
 
     @OneToMany(mappedBy = "gender",fetch = FetchType.LAZY,cascade = {CascadeType.MERGE,CascadeType.PERSIST})
     public List<Client> getClient() {

@@ -1,31 +1,28 @@
 package az.isha.hotel.form;
 
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 
 public class BookingForm {
 
-    @NotNull(message = "not null")
+    @NotEmpty(message = "Пустое поле! Введите имя клиента!")
     @Size(max = 50,message = "max size  = 50  ")
     private String fullName;
     @Email
     @Size(max = 50)
     private String email;
     private String gender;
-    @NotNull
+    @NotEmpty(message = "Пустое поле! Введите номер телефона!")
     @Pattern(regexp = "^([0-9]+)$", message = "Ошибка заполнения номера")
     private String phone;
-    @NotNull
+    @NotEmpty(message = "Пустое поле! Введите дату заселения!")
     @Pattern(regexp = "^[0-9]{4}-[0-9]{2}-[0-9]{2}$", message = "ошибка даты")
     private String arrive;
-    @NotNull
+    @NotEmpty(message = "Пустое поле! Введите дату выезда!")
     @Pattern(regexp = "^[0-9]{4}-[0-9]{2}-[0-9]{2}$", message = "ошибка даты")
     private String depart;
-    @NotNull(message = "not null")
+    @NotNull(message = "Пустое поле!Введите количество мест!")
     private Integer seats;
-    @NotNull(message = "not null")
+    @NotEmpty(message = "Пустое поле!Введите тип номера!")
     private String type;
     private String address;
     private String comment;

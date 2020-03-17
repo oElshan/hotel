@@ -9,9 +9,9 @@ import java.util.Objects;
 @Table(name = "rooms")
 public class Rooms {
     private Integer id;
-    private Integer number;
-    private Integer seats;
-    private Float price;
+    private int number;
+    private int seats;
+    private float price;
     private String info;
     private String ac;
     private String phone;
@@ -75,32 +75,32 @@ public class Rooms {
 
     @Basic
     @Column(name = "number")
-    public Integer getNumber() {
+    public int getNumber() {
         return number;
     }
 
-    public void setNumber(Integer number) {
+    public void setNumber(int number) {
         this.number = number;
     }
 
 
     @Basic
     @Column(name = "seats")
-    public Integer getSeats() {
+    public int getSeats() {
         return seats;
     }
 
-    public void setSeats(Integer seats) {
+    public void setSeats(int seats) {
         this.seats = seats;
     }
 
     @Basic
     @Column(name = "price")
-    public Float getPrice() {
+    public float getPrice() {
         return price;
     }
 
-    public void setPrice(Float price) {
+    public void setPrice(float price) {
         this.price = price;
     }
 

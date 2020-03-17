@@ -1,18 +1,21 @@
 package az.isha.hotel.form;
 
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
 public class RoomForm {
     @NotNull(message = "not null")
     private Integer number;
-    @NotNull(message = "not null")
+    @NotEmpty(message = "Пустое поле! Укажите тип номера!")
     private String type;
-    @NotNull(message = "not null")
+    @NotEmpty(message = "not null")
     private String ac;
+    @NotNull(message = "not null")
     private Integer seats;
     @Pattern(regexp = "^\\d+$", message = "Invalid value")
     private String phone;
+    @NotNull(message = "not null")
     private Float price;
     private String info;
 

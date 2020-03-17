@@ -3236,7 +3236,7 @@ textarea.form-control-textarea {
 .user-panel .image img {
     max-width: 100%;
 }
-.user-panel .image {
+.user-panel .   image {
     width: 35%;
     max-width: 75px;
 }
@@ -4317,8 +4317,8 @@ h4.media-heading {
 }
 .card-body:before,
 .card-body:after {
-    content: " ";
-    display: table;
+    /*content: " ";*/
+    /*display: table;*/
 }
 .card-body:after {
     clear: both;
@@ -6127,6 +6127,10 @@ fieldset[disabled] .btn.purple:not(.btn-outline):hover {
 .btn-facebook {
   color: #ffffff !important;
   background-color: #3b5998 !important;
+}
+.btn.btn-facebook.newbooking {
+    margin-top: 10px;
+    margin-left: 8px;
 }
 .btn-twitter {
   color: #ffffff !important;

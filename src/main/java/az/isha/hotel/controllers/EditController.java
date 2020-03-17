@@ -5,6 +5,7 @@ import az.isha.hotel.entity.Booking;
 import az.isha.hotel.entity.Rooms;
 import az.isha.hotel.form.BookingForm;
 import az.isha.hotel.form.RoomForm;
+import az.isha.hotel.form.StaffForm;
 import az.isha.hotel.services.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -31,17 +32,19 @@ public class EditController {
     @RequestMapping(value = "/newBooking", method = RequestMethod.POST)
     public String newBooking(@Valid @ModelAttribute("bookingForm") BookingForm bookingForm, BindingResult bindingResult , Model model) {
         logger.info(bookingForm.toString());
+        System.out.println(bookingForm.toString());
         if (bindingResult.hasErrors()) {
-            return "new_booking";
+            return "add_booking";
         }
         Booking booking = editDataService.createNewBooking(bookingForm);
         List<Booking> bookingList = editDataService.getAllBooking();
         model.addAttribute("bookingList", bookingList);
-        return "view_booking";
+        return "all_booking";
     }
 
     @RequestMapping(value = "/newRoom", method = RequestMethod.POST)
-    public String newRoom(@Valid @ModelAttribute("roomForm") RoomForm roomForm, Model model, BindingResult bindingResult) {
+    public String newRoom(@Valid @ModelAttribute("roomForm") RoomForm roomForm, BindingResult bindingResult, Model model) {
+        System.out.println(roomForm.toString());
         if (bindingResult.hasErrors()) {
             return "add_room";
         }
@@ -50,6 +53,17 @@ public class EditController {
         List<Rooms> roomsList = editDataService.getAllRooms();
         model.addAttribute("roomsList", roomsList);
         return "all_rooms";
+    }
+
+
+    @RequestMapping(value = "/newStaff", method = RequestMethod.POST)
+    public String newStaff(@Valid @ModelAttribute("staffForm") StaffForm staffForm, BindingResult bindingResult, Model model) {
+        System.out.println(staffForm.toString());
+        if (bindingResult.hasErrors()) {
+            return "add_staff";
+        }
+
+        return "all_staffs";
     }
 
 
