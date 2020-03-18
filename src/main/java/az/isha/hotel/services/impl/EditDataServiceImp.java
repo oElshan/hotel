@@ -3,11 +3,9 @@ package az.isha.hotel.services.impl;
 import az.isha.hotel.entity.*;
 import az.isha.hotel.form.BookingForm;
 import az.isha.hotel.form.RoomForm;
+import az.isha.hotel.form.StaffForm;
 import az.isha.hotel.form.UserForm;
-import az.isha.hotel.repository.BookingRepository;
-import az.isha.hotel.repository.RoomRepository;
-import az.isha.hotel.repository.StatusRepository;
-import az.isha.hotel.repository.UserRepository;
+import az.isha.hotel.repository.*;
 import az.isha.hotel.services.EditDataService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -30,6 +28,10 @@ public class EditDataServiceImp implements EditDataService {
     UserRepository userRepository;
     @Autowired
     StatusRepository statusRepository;
+    @Autowired
+    RoleRepository roleRepository;
+    @Autowired
+    GenderRepository genderRepository;
 
     @Override
     public List<Booking> getAllBooking() {
@@ -100,5 +102,31 @@ public class EditDataServiceImp implements EditDataService {
     @Override
     public User findUserByLogin(final String login) {
         return  userRepository.findUserByLogin(login);
+    }
+
+    @Override
+    @Transactional
+    public User createNewUser(StaffForm staffForm) {
+        User user = new User();
+        user.setName(staffForm.getFullName());
+        user.setLogin(staffForm.getLogin());
+        user.setEmail(staffForm.getEmail());
+        user.setJoinDate(Date.valueOf(staffForm.getJoinDate()));
+        user.setPassword(staffForm.getPassword());
+        Roles role = roleRepository.findByName(staffForm.getRole().toUpperCase());
+        user.setRoles(role);
+        Gender gender = genderRepository.findGenderByName(staffForm.getGender());
+        gender.setName(staffForm.getGender());
+        user.setGender(gender);
+        user.setPhone(staffForm.getPhone());
+        user.setBirthday(Date.valueOf(staffForm.getBirthday()));
+        user.setAddress(staffForm.getAddress());
+        user.setEduction(staffForm.getEducation());
+        return userRepository.save(user);
+    }
+
+    @Override
+    public List<User> findAllUsers() {
+        return userRepository.findAll();
     }
 }

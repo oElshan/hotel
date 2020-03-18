@@ -3,6 +3,7 @@ package az.isha.hotel.controllers;
 
 import az.isha.hotel.entity.Booking;
 import az.isha.hotel.entity.Rooms;
+import az.isha.hotel.entity.User;
 import az.isha.hotel.form.BookingForm;
 import az.isha.hotel.form.RoomForm;
 import az.isha.hotel.form.StaffForm;
@@ -13,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -62,6 +64,14 @@ public class EditController {
         if (bindingResult.hasErrors()) {
             return "add_staff";
         }
+        // TODO: 2020-03-18 тут не верно походу
+        if (editDataService.findUserByLogin(staffForm.getLogin()) != null) {
+            bindingResult.addError(new ObjectError("loginError","Пользователь с таким длогином уже существует!"));
+            return "add_staff";
+        }
+        editDataService.createNewUser(staffForm);
+        List<User> usrers = editDataService.findAllUsers();
+        model.addAttribute("listUsers", usrers);
 
         return "all_staffs";
     }

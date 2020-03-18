@@ -2,6 +2,7 @@ package az.isha.hotel.controllers;
 
 import az.isha.hotel.entity.Booking;
 import az.isha.hotel.entity.Rooms;
+import az.isha.hotel.entity.User;
 import az.isha.hotel.form.BookingForm;
 import az.isha.hotel.form.RoomForm;
 import az.isha.hotel.form.SignInForm;
@@ -96,6 +97,8 @@ public class WelcomeController {
 
     @RequestMapping(value = "/all_staffs")
     public String allStaff( Model model) {
+        List<User> usrers = editDataService.findAllUsers();
+        model.addAttribute("listUsers", usrers);
         return "all_staffs";
     }
 

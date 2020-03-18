@@ -18,6 +18,7 @@ public class User {
     private Date birthday;
     private String address;
     private String eduction;
+    private Date joinDate;
     private Timestamp dateCreate;
     private Timestamp dateUpdate;
     private Roles roles;
@@ -61,6 +62,14 @@ public class User {
 
     public void setGender(Gender gender) {
         this.gender = gender;
+    }
+
+    public Date getJoinDate() {
+        return joinDate;
+    }
+
+    public void setJoinDate(Date joinDate) {
+        this.joinDate = joinDate;
     }
 
     @Basic
