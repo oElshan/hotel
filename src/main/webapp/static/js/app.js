@@ -841,6 +841,50 @@ var App = function() {
 
 jQuery(document).ready(function() {
     App.init(); // init core componets
+    var picker = new Lightpick({
+        field: document.getElementById('datepicker'),
+        singleDate: false,
+        format: 'YYYY-MM-DD',
+        separator: ' ',
+        numberOfMonths: 2
+
+    });
+
+    $('button#newBooking').on('click',function (){
+
+        var jsonNewBook = {
+            arriveToDepart: $('input#datepicker').val(),
+            persons: $('input#persons').val(),
+            children: $('input#children').val(),
+            roomType: $('select#roomType').val()
+        };
+        var newBookingForm = JSON.stringify(jsonNewBook);
+        alert(JSON.stringify(jsonNewBook))
+
+        $.ajax({
+            type: "POST",
+            url: "startBooking",
+            cache: false,
+            dataType : "html",
+            contentType: 'application/json',
+            data:   newBookingForm,
+            success : function(data){
+                $('div#resultBooking').replaceWith(data);
+                // alert(JSON.stringify(data));
+                // alert(JSON.stringify(data));
+                alert(data);
+            },
+            error:  function(xhr, str){
+
+                alert("Ошибка")
+
+            }
+
+        });
+        return false;
+    })
+
+
     $(".chat-sidebar-chat-user-messages").animate({
         scrollTop: $(document).height()
     }, 1000);

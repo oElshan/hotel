@@ -16,6 +16,8 @@ import org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring5.view.ThymeleafViewResolver;
 import org.thymeleaf.standard.StandardDialect;
 
+import java.util.List;
+
 
 @EnableWebMvc
 @Configuration
@@ -68,5 +70,10 @@ public class WebConfig  implements WebMvcConfigurer {
         viewResolver.setTemplateEngine(templateEngine());
         viewResolver.setCharacterEncoding("UTF-8");
         return viewResolver;
+    }
+
+    @Override
+    public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
+
     }
 }

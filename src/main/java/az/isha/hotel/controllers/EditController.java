@@ -5,19 +5,20 @@ import az.isha.hotel.entity.Booking;
 import az.isha.hotel.entity.Rooms;
 import az.isha.hotel.entity.User;
 import az.isha.hotel.form.BookingForm;
+import az.isha.hotel.form.NewBookingForm;
 import az.isha.hotel.form.RoomForm;
 import az.isha.hotel.form.StaffForm;
 import az.isha.hotel.services.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
@@ -30,7 +31,15 @@ public class EditController {
     @Autowired
     EditDataService editDataService;
 
-    // TODO: 2020-03-05 добавить отображение
+
+    @RequestMapping(value = "/startBooking", method = RequestMethod.POST)
+    public String startBooking( @RequestBody NewBookingForm newBookingForm,Model model) {
+        System.out.println(newBookingForm.toString());
+        List<Rooms> list = editDataService.getAllRooms();
+        model.addAttribute("roomsList",list);
+        return "available_rooms::roomsList";
+    }
+
     @RequestMapping(value = "/newBooking", method = RequestMethod.POST)
     public String newBooking(@Valid @ModelAttribute("bookingForm") BookingForm bookingForm, BindingResult bindingResult , Model model) {
         logger.info(bookingForm.toString());

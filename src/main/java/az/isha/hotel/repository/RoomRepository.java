@@ -13,7 +13,6 @@ public interface RoomRepository extends CrudRepository<Rooms, Long> {
 //    @Query("SELECT p from Post p WHERE p.user IN :users ORDER BY p.timeStamp DESC")
 //    public List<Post> find(@Param("users") Set<User> followingList);
 
-    @Query(value = "select * from hotel.rooms" ,nativeQuery = true)
-    List<Rooms> getAllrooms();
+    List<Rooms> findAll();
 
 }

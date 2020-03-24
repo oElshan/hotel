@@ -62,10 +62,10 @@
 	                                            <tr>
 	                                            	<th></th>
 	                                                <th class="center"> Name </th>
-	                                                <th class="center"> Designation </th>
+	                                                <th class="center"> Login </th>
 	                                                <th class="center"> Mobile </th>
-	                                                <th class="center"> Email </th>
-	                                                <th class="center"> Address </th>
+	                                                <th class="center"> Position </th>
+	                                                <th class="center"> Joining Date </th>
 	                                                <th class="center">Joining Date</th>
 	                                                <th class="center"> Action </th>
 	                                            </tr>
@@ -77,11 +77,11 @@
 													</td>
 													<td class="center" th:text="${user.name}" ></td>
 													<td class="center" th:text="${user.login}" ></td>
-													<td class="center" th:text="${user.name}" ><a href="tel:4444565756">
+													<td class="center" th:text="${user.phone}" ><a href="tel:4444565756">
 															4444565756 </a></td>
-													<td class="center" th:text="${user.name}" ><a href="mailto:shuxer@gmail.com">
+													<td class="center" th:text="${user.roles}" ><a href="mailto:shuxer@gmail.com">
 															rajesh@gmail.com </a></td>
-													<td class="center" th:text="${user.name}" >22,tilak appt. surat</td>
+													<td class="center" th:text="${user.joinDate}" >22,tilak appt. surat</td>
 													<td class="center" th:text="${user.name}" >22 Feb 2000</td>
 													<td class="center">
 														<a href="edit_staff.html" class="btn btn-tbl-edit btn-xs">

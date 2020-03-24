@@ -96,7 +96,7 @@ public class EditDataServiceImp implements EditDataService {
     }
 
     public List<Rooms> getAllRooms() {
-        return roomRepository.getAllrooms();
+        return roomRepository.findAll();
     }
 
     @Override

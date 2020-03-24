@@ -76,11 +76,7 @@ public class WelcomeController {
     public String allRoom( Model model) {
 
         List<Rooms> list = editDataService.getAllRooms();
-        for (Rooms rooms : list) {
-            System.out.println(rooms.toString());
-        }
-        System.out.println( editDataService.getAllRooms());
-        model.addAttribute("roomsList",editDataService.getAllRooms());
+        model.addAttribute("roomsList",list);
         return "all_rooms";
     }
 
@@ -111,6 +107,11 @@ public class WelcomeController {
     public String signInFail(Model model) {
         model.addAttribute("loginError",true);
         return "login";
+    }
+
+    @RequestMapping(value = "/check_in")
+    public String checkIn(Model model) {
+        return "check_in";
     }
 
 
